@@ -18,6 +18,8 @@ class TermController extends Controller
 		$termManager = new \Manager\termManager();
 		$terms = $termManager->findAll("modifiedDate", "DESC");
 
+
+
 		
 		$this->show('term/show_all_terms', ['terms' => $terms]);
 	}
@@ -62,6 +64,24 @@ class TermController extends Controller
 
 		//passer le terme à la vue, afin de rendre la variable disponible
 		$this->show('term/edit_terms', ["term" => $term]);
+	}
+
+	public function changeWotd($id)
+	{
+		$termManager = new \Manager\TermManager();
+		//sélectionner le mot du jour actuel	
+		$wotd = $termManager->getCurrentWordOfTheDay();
+
+		//faire un update sur l'ancien mot du jour pour le mettre à 0
+		$termManager->update(["is_wotd" => 0], $wotd['id']);
+
+		//faire un update sur le nouveau mot du jour pour le mettre à 1
+		$termManager->update(["is_wotd" => 1], $id);
+
+		//rediriger vers la page d'accueil
+		$this->redirectToRoute('show_all_terms');
+		
+
 	}
 
 }
