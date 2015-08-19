@@ -6,8 +6,10 @@
 	<table>
 	<?php foreach($terms as $term): ?>
 	<tr>
-	<td><?php echo $term['name'] ?></td>
-	<td><?php echo $term['modifiedDate'] ?></td>
+	<td><?= $this->e($term['id']) ?></td>
+	<td><?= $this->e($term['name']) ?></td>
+	<td><?= $this->e($term['modifiedDate']) ?></td>
+	<td><a href="<?php echo $this->url('delete', ["id" => $term['id']]) ?>">Effacer</a></td>
 	</tr>
 	<?php endforeach; ?> 
 	</table>

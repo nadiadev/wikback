@@ -16,10 +16,17 @@ class TermController extends Controller
 	{
 
 		$termManager = new \Manager\termManager();
-		$terms = $termManager->findAll();
+		$terms = $termManager->findAll("modifiedDate", "DESC");
 
 		
 		$this->show('term/show_all_terms', ['terms' => $terms]);
+	}
+
+	public function delete($id)
+	{
+		$termManager = new \Manager\termManager();
+		$termManager->delete($id);
+		$this->redirectToRoute('show_all_terms');
 	}
 
 }
