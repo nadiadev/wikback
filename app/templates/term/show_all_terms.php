@@ -10,6 +10,7 @@
 	<td><?= $this->e($term['name']) ?></td>
 	<td><?= $this->e($term['modifiedDate']) ?></td>
 	<td><a href="<?php echo $this->url('delete', ["id" => $term['id']]) ?>">Effacer</a></td>
+	<td><a href="<?php echo $this->url('edit_term', ["id" => $term['id']]) ?>">Modifier ce term</a></td>
 	</tr>
 	<?php endforeach; ?> 
 	</table>
