@@ -14,6 +14,7 @@
 			<h1>Wikébec Admin :: <?= $this->e($title) ?></h1>
 
 			<a href="<?= $this->url('change_wotd') ?>" title="Modifier le mot du jour actuel">Nouveau mot du jour</a>
+			<a href="<?= $this->url('register_administrator') ?>" title="Nouvel administrateur">Ajouter un nouvel administrateur</a>
 		</header>
 
 		<section>
